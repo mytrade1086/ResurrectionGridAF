@@ -58,8 +58,8 @@ public class Base {
 		}
 
 		else if (runmode.contains("remote")) {
-			
-			String nodeUrl="http://192.168.0.10:5556/wd/hub/";
+
+			String nodeUrl = "http://192.168.0.10:5556/wd/hub/";
 			switch (browser) {
 			case "chrome":
 				// Define desired capabilities
@@ -85,7 +85,7 @@ public class Base {
 				// WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 				driver.get(prop.getProperty("appurl"));
-				
+
 				return driver;
 			}
 		}
@@ -105,25 +105,24 @@ public class Base {
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
-			
+
 			System.out.println("quiting driver");
 		}
 	}
 
 	public static String ScreenShot() {
-
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 		String datestamp = sdf.format(new Date());
+		System.out.println(datestamp);
 		return datestamp;
 	}
 
-	public void takeScreenShot(String method,WebDriver driver) throws IOException {
+	public void takeScreenShot(String method, WebDriver driver) throws IOException {
 		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		String name=method+"_"+ScreenShot().replace(":", "_");
-		String filename="H:\\eclipseWin10\\com.ResurrectionGridAF\\src\\main\\java\\Reports\\"+name+".png";
-		//System.out.println(filename);
-		FileUtils.copyFile(src,
-				new File(filename));
+		String name = method + "_" + ScreenShot().replace(":", "_");
+		String filename = "H:\\eclipseWin10\\com.ResurrectionGridAF\\src\\main\\java\\Reports\\" + name + ".png";
+		// System.out.println(filename);
+		FileUtils.copyFile(src, new File(filename));
 
 	}
 

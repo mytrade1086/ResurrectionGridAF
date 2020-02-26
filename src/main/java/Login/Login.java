@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import Base.Base;
 import Utility.ElementUtil;
 import Utility.JavaScriptUtil;
+import homePage.homePage;
 
 public class Login extends Base {
 	ElementUtil el;
@@ -26,9 +27,10 @@ public class Login extends Base {
 		el.doSendKeys(Password, password, "password textbox");
 	}
 
-	public void clickLogin() {
+	public homePage clickLogin() {
 		//el.doClick(Login, "Login btn");
 		JavaScriptUtil.jsClick(Login, "Login btn");
+		return new homePage();
 	}
 
 	
