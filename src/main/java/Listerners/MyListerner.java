@@ -1,7 +1,12 @@
 package Listerners;
 
+import java.io.File;
 import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -11,6 +16,8 @@ import org.testng.annotations.Test;
 import Base.Base;
 
 public class MyListerner extends Base implements ITestListener{
+	//WebDriver driver;
+	
 @Override
 	public void onTestStart(ITestResult result) {
 		
@@ -27,17 +34,20 @@ public class MyListerner extends Base implements ITestListener{
 	@Override
 	public void onTestFailure(ITestResult result) {
 		System.out.println("Test has FAILED: "+result.getName());
-	  //  Base.ScreenShot();
-	    try {	
-	    	String method=result.getMethod().getMethodName();
-			takeScreenShot(method ,driver);
+		
+		//ITestContext context = result.getTestContext();
+		//WebDriver driver = (WebDriver)context.getAttribute("driver");
+	    String method=result.getMethod().getMethodName();
+		try {
+			takeScreenShot(method,driver);
 		} catch (IOException e) {
-			System.out.println("Error in method call : takeScreenShot");
+			
 			e.printStackTrace();
-		}
-	    
-	    
+		}        
 	}
+
+
+
 
 	@Override
 	public void onTestSkipped(ITestResult result) {

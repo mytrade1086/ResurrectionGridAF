@@ -21,12 +21,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Base {
 	public static WebDriver driver;
 	public Properties prop;
+	public ITestContext context;
 
 	public WebDriver setUp(Properties prop) throws MalformedURLException {
 
@@ -56,7 +58,9 @@ public class Base {
 		}
 
 		else if (runmode.contains("remote")) {
-			switch ("browser") {
+			
+			String nodeUrl="http://192.168.0.10:5556/wd/hub/";
+			switch (browser) {
 			case "chrome":
 				// Define desired capabilities
 				DesiredCapabilities cap = new DesiredCapabilities();
@@ -66,7 +70,8 @@ public class Base {
 				ChromeOptions options = new ChromeOptions();
 				options.merge(cap);
 				// options.setHeadless(true);
-				driver = new RemoteWebDriver(new URL("http://192.168.0.10:5556/wd/hub"), options);
+				driver = new RemoteWebDriver(new URL(nodeUrl), options);
+				driver.get(prop.getProperty("appurl"));
 				return driver;
 
 //CORRECT  CODE FOR REMOTE
@@ -80,10 +85,12 @@ public class Base {
 				// WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 				driver.get(prop.getProperty("appurl"));
+				
 				return driver;
 			}
 		}
 
+		System.out.println("driver is null");
 		return null;
 	}
 
@@ -98,6 +105,8 @@ public class Base {
 	public void tearDown() {
 		if (driver != null) {
 			driver.quit();
+			
+			System.out.println("quiting driver");
 		}
 	}
 
@@ -105,7 +114,6 @@ public class Base {
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy hh:mm:ss");
 		String datestamp = sdf.format(new Date());
-		// System.out.println(datestamp);
 		return datestamp;
 	}
 

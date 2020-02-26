@@ -1,3 +1,5 @@
-appurl=https://www.rediff.com
+appurl=https://classic.freecrm.com/
 runmode=local
 browser=chrome
+username=batchautomation
+password=Test@12345
