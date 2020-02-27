@@ -22,6 +22,18 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.ITestContext;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.relevantcodes.extentreports.ExtentTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -29,9 +41,19 @@ public class Base {
 	public static WebDriver driver;
 	public Properties prop;
 	public ITestContext context;
-
+	
+	 static public ExtentHtmlReporter reporter;
+	 static public ExtentReports extent;
+	 static public com.aventstack.extentreports.ExtentTest logger;
+//		
+@BeforeSuite
+	public void ExtentSet() {
+		reporter=new ExtentHtmlReporter("H:\\eclipseWin10\\com.ResurrectionGridAF\\src\\main\\java\\Reports\\Extent.html");
+		extent=new ExtentReports();
+		extent.attachReporter(reporter);
+	  }
+	
 	public WebDriver setUp(Properties prop) throws MalformedURLException {
-
 		String runmode = prop.getProperty("runmode");
 		String browser = prop.getProperty("browser");
 
@@ -41,20 +63,23 @@ public class Base {
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver();
 				driver.get(prop.getProperty("appurl"));
-				return driver;
+				break;
+				
 
 			case "firefox":
 				WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 				driver.get(prop.getProperty("appurl"));
-				return driver;
+				break;
 
 			case "ie":
 				WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 				driver.get(prop.getProperty("appurl"));
-				return driver;
+				break;
 			}
+			
+		//	return driver;
 		}
 
 		else if (runmode.contains("remote")) {
@@ -72,26 +97,28 @@ public class Base {
 				// options.setHeadless(true);
 				driver = new RemoteWebDriver(new URL(nodeUrl), options);
 				driver.get(prop.getProperty("appurl"));
-				return driver;
+				break;
 
 //CORRECT  CODE FOR REMOTE
 			case "firefox":
 				// WebDriverManager.firefoxdriver().setup();
 				driver = new FirefoxDriver();
 				driver.get(prop.getProperty("appurl"));
-				return driver;
+				break;
 
 			case "ie":
 				// WebDriverManager.iedriver().setup();
 				driver = new InternetExplorerDriver();
 				driver.get(prop.getProperty("appurl"));
+				break;
 
-				return driver;
+				
 			}
+			
 		}
 
-		System.out.println("driver is null");
-		return null;
+		System.out.println("driver from else if");
+	    return driver;
 	}
 
 	public Properties initProp() throws IOException {
@@ -102,7 +129,7 @@ public class Base {
 		return prop;
 	}
 
-	public void tearDown() {
+	public void tearDown() throws InterruptedException {
 		if (driver != null) {
 			driver.quit();
 

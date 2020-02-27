@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="27161" started-at="2020-02-26T04:55:46Z" finished-at="2020-02-26T04:56:14Z">
+  <suite name="Suite" duration-ms="78025" started-at="2020-02-27T07:36:24Z" finished-at="2020-02-27T07:37:42Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="27161" started-at="2020-02-26T04:55:46Z" finished-at="2020-02-26T04:56:14Z">
+    <test name="Test" duration-ms="78025" started-at="2020-02-27T07:36:24Z" finished-at="2020-02-27T07:37:42Z">
       <class name="Cases.CaseOne">
-        <test-method status="PASS" signature="init()[pri:0, instance:Cases.CaseOne@239963d8]" name="init" is-config="true" duration-ms="12777" started-at="2020-02-26T04:55:46Z" finished-at="2020-02-26T04:55:59Z">
+        <test-method status="PASS" signature="ExtentSet()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="ExtentSet" is-config="true" duration-ms="965" started-at="2020-02-27T07:36:23Z" finished-at="2020-02-27T07:36:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- ExtentSet -->
+        <test-method status="PASS" signature="init()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="init" is-config="true" duration-ms="22061" started-at="2020-02-27T07:36:24Z" finished-at="2020-02-27T07:36:46Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="Login()[pri:0, instance:Cases.CaseOne@239963d8]" name="Login" duration-ms="10337" started-at="2020-02-26T04:55:59Z" finished-at="2020-02-26T04:56:10Z">
+        <test-method status="PASS" signature="caseOne()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="caseOne" duration-ms="44" started-at="2020-02-27T07:36:46Z" finished-at="2020-02-27T07:36:46Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Login -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:Cases.CaseOne@239963d8]" name="tearDown" is-config="true" duration-ms="4002" started-at="2020-02-26T04:56:10Z" finished-at="2020-02-26T04:56:14Z">
+        </test-method> <!-- caseOne -->
+        <test-method status="PASS" signature="tearDowntest()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="tearDowntest" is-config="true" duration-ms="6940" started-at="2020-02-27T07:36:46Z" finished-at="2020-02-27T07:36:53Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- tearDown -->
+        </test-method> <!-- tearDowntest -->
+        <test-method status="PASS" signature="init()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="init" is-config="true" duration-ms="17937" started-at="2020-02-27T07:36:53Z" finished-at="2020-02-27T07:37:11Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- init -->
+        <test-method status="PASS" signature="clickNewEvent()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="clickNewEvent" duration-ms="24759" started-at="2020-02-27T07:37:11Z" finished-at="2020-02-27T07:37:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- clickNewEvent -->
+        <test-method status="PASS" signature="tearDowntest()[pri:0, instance:Cases.CaseOne@73ad2d6]" name="tearDowntest" is-config="true" duration-ms="6069" started-at="2020-02-27T07:37:36Z" finished-at="2020-02-27T07:37:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDowntest -->
       </class> <!-- Cases.CaseOne -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>

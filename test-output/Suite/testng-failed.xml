@@ -9,8 +9,8 @@
       <class name="Cases.CaseOne">
         <methods>
           <include name="init"/>
+          <include name="clickNewEvent"/>
           <include name="tearDown"/>
-          <include name="Login"/>
         </methods>
       </class> <!-- Cases.CaseOne -->
     </classes>

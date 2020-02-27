@@ -16,9 +16,12 @@ public class ElementUtil extends Base {
 
 		try {
 			ele = driver.findElement(by);
+			
 			return ele;
 		} catch (Exception e) {
 			System.out.println("Problem Locating " + elementName);
+			
+			logger.fail("Problem Locating " + elementName);
 			return null;
 		}
 	}
@@ -63,6 +66,7 @@ public class ElementUtil extends Base {
 		try {
 			el.click();
 			System.out.println("Clicked " + elementName);
+			logger.info("Clicked " + elementName);
 		} catch (Exception e) {
 			System.out.println("Error while clicking " + elementName);
 		}
@@ -75,6 +79,8 @@ public class ElementUtil extends Base {
 			el.clear();
 			el.sendKeys(texttoBeEntered);
 			System.out.println("Entered " + texttoBeEntered + "in " + elementName);
+			logger.info("Entered " + texttoBeEntered + "in " + elementName);
+			//logger.info("hi");
 		} catch (Exception e) {
 			System.out.println("Error while entering data in " + elementName);
 		}
@@ -86,12 +92,11 @@ public class ElementUtil extends Base {
 		Actions act = new Actions(driver);
 		try {
 			act.click(el).build().perform();
-			;
-
-			// el.click();
-			System.out.println("Clicked on " + elementName + " using action class");
+			logger.info("Clicked on "+elementName+" using Action class");
+						// el.click();
+			System.out.println("Clicked on " + elementName + " using Action class");
 		} catch (Exception e) {
-			System.out.println("Error while clicking " + elementName + "using action class");
+			System.out.println("Error while clicking " + elementName + "using Actions class");
 		}
 	}
 
@@ -109,9 +114,12 @@ public class ElementUtil extends Base {
 		try {
 			act.moveToElement(we).build().perform();
 			System.out.println("Moved the mouse to " + elementName);
+			logger.info("Moved Cursor to <b>"+elementName+"</b>+ using Actions class");
+			
 		} catch (Exception e) {
 
 			System.out.println("Could not move the mouse to " + elementName);
+			logger.fail("Error while moving cursor to "+elementName+" using Actions class");
 		}
 
 	}
