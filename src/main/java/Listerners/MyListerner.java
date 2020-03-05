@@ -38,7 +38,7 @@ public class MyListerner extends Base implements ITestListener {
 	public void onTestFailure(ITestResult result) {
 		System.out.println("Test has FAILED: " + result.getName());
 
-		logger.log(Status.PASS, "Test has FAILED: " + result.getName());
+		logger.log(Status.FAIL, "Test has FAILED: " + result.getName());
 		// ITestContext context = result.getTestContext();
 		// WebDriver driver = (WebDriver)context.getAttribute("driver");
 		String method = result.getMethod().getMethodName();
@@ -53,6 +53,7 @@ public class MyListerner extends Base implements ITestListener {
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		System.out.println("Test has been SKIPPED: " + result.getName());
+		logger.log(Status.SKIP, "Test has been skipped: " + result.getName());
 	}
 
 	@Override

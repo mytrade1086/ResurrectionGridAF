@@ -6,13 +6,14 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="Cases.CaseOne">
+      <class name="Cases.CaseTwo">
         <methods>
-          <include name="init"/>
-          <include name="clickNewEvent"/>
           <include name="tearDown"/>
+          <include name="caseSix"/>
+          <include name="caseEight"/>
+          <include name="init"/>
         </methods>
-      </class> <!-- Cases.CaseOne -->
+      </class> <!-- Cases.CaseTwo -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

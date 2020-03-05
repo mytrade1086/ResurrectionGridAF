@@ -26,7 +26,7 @@ public class CaseTwo {
 	}
 
 	@AfterMethod
-	public void tearDown() {
+	public void tearDown() throws InterruptedException {
 	b.tearDown();
 	}
 	
@@ -46,7 +46,7 @@ public class CaseTwo {
 		Assert.assertEquals(true, true);
 	}
 
-	@Test
+	@Test(invocationCount=3)
 	public void caseEight() {	
 		Assert.assertEquals(true, false);
 	}

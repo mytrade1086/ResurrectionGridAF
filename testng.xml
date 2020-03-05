@@ -5,9 +5,11 @@
 <listeners>
 <listener class-name="Listerners.MyListerner"/>
 </listeners>
+
+
   <test thread-count="5" name="Test">
     <classes>
-      
+      <class name="Cases.CaseTwo"/>
       <class name="Cases.CaseOne"/>
     </classes>
   </test> <!-- Test -->
