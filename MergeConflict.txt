@@ -8,3 +8,4 @@ line7
 was blank line 8.. *no conflict
 was line 9 . I made 99 *expecting conflict
 this line was not there in master. *no conflict
+
